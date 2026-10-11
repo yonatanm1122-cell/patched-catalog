@@ -10,8 +10,8 @@
 <meta property="og:site_name" content="PATCHED.BAR">
 <meta property="og:title" content="PATCHED. — החוויה שהאורחים לוקחים הביתה">
 <meta property="og:description" content="קטלוג Custom Bar לאירועים: כובעים, תיקים וחולצות בעיצוב אישי.">
-<meta property="og:url" content="https://patched-catalog.netlify.app/">
-<meta property="og:image" content="https://patched-catalog.netlify.app/og-image.jpg">
+<meta property="og:url" content="https://patched-catalog.vercel.app/">
+<meta property="og:image" content="https://patched-catalog.vercel.app/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -322,6 +322,98 @@ h1,h2,h3{font-weight:300;line-height:1.1;margin:0;text-wrap:balance;letter-spaci
 .foot-bottom{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);font-size:13.5px;color:var(--muted)}
 @media (max-width:760px){.foot-grid{grid-template-columns:1fr}}
 
+/* ── icon badges ── */
+.badge{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:50%;flex:none;color:var(--ink)}
+.badge svg{width:26px;height:26px}
+/* mega events with icons */
+.mega-events{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 24px}
+.mega-ev{flex-direction:row;align-items:center;gap:12px;padding:8px;border:1px solid transparent}
+.mega-ev:hover{border-color:var(--line)}
+/* ── category bar ── */
+.catbar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:clamp(22px,3vw,34px)}
+.cat{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:96px;padding:12px 10px 10px;background:#fff;border:1px solid var(--line);cursor:pointer;font-size:15px;font-weight:500;transition:border-color .2s,background .2s}
+.cat:hover{border-color:var(--ink)}
+.cat[aria-selected="true"]{border-color:var(--ink);background:var(--soft);box-shadow:inset 0 -3px 0 var(--ink)}
+@media (max-width:760px){
+  .catbar{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter);padding-bottom:4px;scroll-snap-type:x proximity}
+  .catbar::-webkit-scrollbar{display:none}
+  .cat{flex:none;min-width:84px;scroll-snap-align:start;font-size:14px}
+}
+.cat-more{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;justify-content:center;margin-top:clamp(24px,3vw,36px)}
+/* ── builder ── */
+.build-wrap{background:var(--soft);padding-block:clamp(48px,7vw,96px)}
+.builder{max-width:860px;margin-inline:auto;background:#fff;border:1px solid var(--line);padding:clamp(18px,3.4vw,40px)}
+.b-top{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14px;color:var(--muted)}
+.b-dots{display:flex;gap:6px}
+.b-dots i{width:22px;height:4px;background:var(--line);display:block}
+.b-dots i.on{background:var(--ink)}
+.b-title{font-size:clamp(24px,3vw,32px);margin:14px 0 16px;font-weight:400}
+.b-title:focus{outline:none}
+.hint{font-size:14.5px;color:var(--muted);margin:0 0 12px}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.opts.small{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:640px){.opts{grid-template-columns:1fr}.opts.small{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.opt{position:relative;display:flex;align-items:center;gap:12px;text-align:right;padding:12px 14px;min-height:64px;background:#fff;border:1px solid var(--line);cursor:pointer;transition:border-color .2s,background .2s}
+.opt:hover{border-color:var(--ink)}
+.opt[aria-pressed="true"]{border-color:var(--ink);background:var(--soft);box-shadow:inset 0 0 0 1px var(--ink)}
+.opt .ot{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+.opt .ot b{font-weight:500;font-size:16px;line-height:1.3}
+.opt .ot span{font-size:13.5px;color:var(--muted);line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.opts.small .opt{flex-direction:column;justify-content:center;text-align:center;gap:6px;padding:14px 8px}
+.opts.small .opt .ot{align-items:center}
+.opt .tick{position:absolute;top:6px;inset-inline-end:6px;width:20px;height:20px;border-radius:50%;background:var(--ink);color:#fff;display:none;place-items:center}
+.opt .tick svg{width:14px;height:14px;stroke-width:3}
+.opt[aria-pressed="true"] .tick{display:grid}
+.bdate{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:14px;font-size:15px;color:var(--ink-2)}
+.bdate input{flex:1;min-width:180px;border:0;border-bottom:1px solid var(--ink-2);padding:10px 0;font-size:17px;outline:none;background:transparent}
+.b-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+.b-nav .btn:disabled{opacity:.35;cursor:default}
+.summary{list-style:none;margin:0 0 18px;padding:0;display:grid;gap:10px}
+.summary li{display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid var(--line)}
+.summary .k{display:block;font-size:13px;color:var(--muted)}
+.summary b{font-weight:500}
+.wa-big{width:100%;min-height:54px;font-size:17px;margin-bottom:10px}
+/* ── how / about (text + icons) ── */
+.how3{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.how3 li{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding:20px 14px;border:1px solid var(--line)}
+.how3 .latin{font-size:12px;color:var(--accent)}
+.how3 b{font-weight:500;font-size:17px}
+.how3 li>span:last-child{color:var(--ink-2);font-size:15px}
+@media (max-width:700px){.how3{grid-template-columns:1fr}.how3 li{flex-direction:row;flex-wrap:wrap;text-align:right;justify-content:flex-start}.how3 li>span:last-child{flex-basis:100%}}
+.dn2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.dn2>div{display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--line);font-size:15px;color:var(--ink-2)}
+.dn2 .latin{font-size:12px;color:var(--accent);margin-inline-end:6px}
+@media (max-width:560px){.dn2{grid-template-columns:1fr}}
+.about-box{max-width:760px;margin-inline:auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px}
+.about-box h2{font-size:clamp(28px,3.6vw,42px)}
+.about-box p{margin:0;color:var(--ink-2)}
+.about-box .points{text-align:right}
+/* event links (no photos) */
+.ev-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:900px){.ev-links{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.ev-links{grid-template-columns:1fr}}
+.ev-link{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line);transition:border-color .2s}
+.ev-link:hover{border-color:var(--ink)}
+.ev-link .tx{display:flex;flex-direction:column;flex:1;min-width:0}
+.ev-link .t{font-weight:500}
+.ev-link .k{font-size:13.5px;color:var(--muted)}
+
+/* ── privacy notice + policy page ── */
+.consent{position:fixed;inset-inline:0;bottom:0;z-index:55;padding:12px var(--gutter) calc(12px + env(safe-area-inset-bottom,0px));pointer-events:none;animation:cin .4s var(--ease) both}
+@keyframes cin{from{transform:translateY(100%)}to{transform:none}}
+.consent-in{pointer-events:auto;max-width:880px;margin-inline:auto;background:#fff;border:1px solid var(--ink);box-shadow:0 18px 40px rgba(20,20,20,.14);padding:16px 18px;display:flex;align-items:center;gap:14px 22px}
+.consent-in p{margin:0;font-size:14.5px;line-height:1.55;color:var(--ink-2);flex:1}
+.consent-in b{color:var(--ink);font-weight:500}
+.consent-act{display:flex;align-items:center;gap:16px;flex:none}
+.consent-act .btn{min-height:44px;padding:8px 26px}
+@media (max-width:640px){.consent-in{flex-direction:column;align-items:stretch}.consent-act{justify-content:space-between}.consent-act .btn{flex:1}}
+.policy{max-width:760px;padding-block:clamp(18px,3vw,30px) clamp(48px,7vw,96px)}
+.policy h1{font-size:clamp(34px,5vw,56px);margin:10px 0 6px}
+.policy .upd{color:var(--muted);font-size:14px;margin:0 0 24px}
+.policy h2{font-size:clamp(20px,2.4vw,24px);font-weight:500;margin:28px 0 8px}
+.policy p,.policy li{color:var(--ink-2)}
+.policy ul{padding-inline-start:20px;margin:8px 0}
+
 .view{animation:fade .45s var(--ease) both}
 @keyframes fade{from{opacity:.001;transform:translateY(8px)}to{opacity:1;transform:none}}
 .rv.in{animation:rvin .8s var(--ease) both}
@@ -379,9 +471,16 @@ h1,h2,h3{font-weight:300;line-height:1.1;margin:0;text-wrap:balance;letter-spaci
         <div class="foot-nav"><ul id="foot-nav-a"></ul><ul id="foot-nav-b"></ul></div>
       </div>
     </div>
-    <p class="foot-bottom">© 2026 PATCHED.BAR · קטלוג תצוגה. לפרטים והתאמה לאירוע שלכם, דברו איתנו בוואטסאפ.</p>
+    <p class="foot-bottom">© 2026 PATCHED.BAR · קטלוג תצוגה. לפרטים והתאמה לאירוע שלכם, דברו איתנו בוואטסאפ. · <a data-go="privacy" role="link" tabindex="0" style="text-decoration:underline">מדיניות פרטיות</a></p>
   </div>
 </footer>
+
+<div class="consent" id="consent" role="region" aria-label="הודעת פרטיות" hidden>
+  <div class="consent-in">
+    <p><b>פרטיות באתר.</b> האתר לא שומר פרטים אישיים ולא משתמש בעוגיות למעקב או לפרסום. פרטים שתכתבו בטופס עוברים ישירות לוואטסאפ, רק אחרי שתלחצו לשלוח.</p>
+    <div class="consent-act"><button type="button" class="btn" id="consent-ok">אישור</button><a class="ulink" data-go="privacy" role="link" tabindex="0" id="consent-more">למדיניות הפרטיות</a></div>
+  </div>
+</div>
 
 <div class="m-cta" id="m-cta" hidden><a class="btn" id="m-cta-a" href="https://wa.me/972504999308" target="_blank" rel="noopener">לפרטים נוספים בוואטסאפ</a></div>
 
@@ -4622,7 +4721,8 @@ window.PATCHED_MEDIA = {
   D.events = D.events.filter(function (e) { return e.picks.length; });
   var E = {}; D.events.forEach(function (e) { E[e.id] = e; });
   var SHIRTS = D.products.filter(function (p) { return p.family === 'shirts'; });
-  var FAMS = Object.keys(D.families).filter(function (f) { return D.products.some(function (p) { return p.family === f; }); });
+  var FAM_ORDER = ['shirts', 'hats', 'bags', 'towels', 'fans', 'textile', 'home', 'travel'];
+  var FAMS = FAM_ORDER.concat(Object.keys(D.families).filter(function (f) { return FAM_ORDER.indexOf(f) < 0; })).filter(function (f) { return D.families[f] && D.products.some(function (p) { return p.family === f; }); });
 
   // Presentation choices (content lives in data.js)
   var EV_COVER = { birthday: 'shirt-m-over-white', wedding: 'fan-round', company: 'shirt-m-over-black', family: 'chef', launch: 'shirt-m-over-cream', special: 'shirt-w-offshoulder' };
@@ -4634,7 +4734,7 @@ window.PATCHED_MEDIA = {
   var HOW_IMGS = ['shirt-w-sport-v', 'shirt-m-washed'];
   var GENDER = { women: 'נשים', men: 'גברים' }, FIT = { oversize: 'אוברסייז', regular: 'רגילה' };
   // Route tokens that scroll to a section (null = stay on the current page)
-  var SCROLL = { how: ['home', 'sec-how'], about: ['home', 'sec-about'], attractions: ['home', 'sec-attr'], collections: ['home', 'sec-events'], types: ['home', 'sec-types'], contact: [null, 'sec-contact'] };
+  var SCROLL = { how: ['home', 'sec-how'], about: ['home', 'sec-about'], attractions: ['home', 'sec-build'], build: ['home', 'sec-build'], collections: ['home', 'sec-types'], types: ['home', 'sec-types'], contact: [null, 'sec-contact'] };
   var ICON = {
     hats: '<path d="M8 33c0-11 7-19 16-19s16 8 16 19"/><path d="M8 33h32c4 0 7 2 9 4H8z"/><path d="M24 14v-3"/>',
     bags: '<path d="M10 18h28l-2 24H12z"/><path d="M18 18v-3a6 6 0 0 1 12 0v3"/>',
@@ -4647,7 +4747,31 @@ window.PATCHED_MEDIA = {
     travel: '<rect x="13" y="8" width="22" height="32" rx="2"/><circle cx="24" cy="21" r="5"/><path d="M18 32h12"/>',
     shirts: '<path d="M17 8l-9 6 4 7 4-2v21h16V19l4 2 4-7-9-6c-1 3-4 5-7 5s-6-2-7-5z"/>'
   };
-  function icon(f) { return '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">' + (ICON[f] || ICON.bags) + '</svg>'; }
+  // small line icons for events, experiences and the builder
+  var ICON2 = {
+    birthday: '<path d="M10 40h28V26H10z"/><path d="M10 31c3 2 5 2 7 0s5-2 7 0 5 2 7 0 5-2 7 0"/><path d="M18 26v-6M24 26v-6M30 26v-6"/><path d="M18 16c-1.2-1-1.2-3 0-4.5 1.2 1.5 1.2 3.5 0 4.5zM24 16c-1.2-1-1.2-3 0-4.5 1.2 1.5 1.2 3.5 0 4.5zM30 16c-1.2-1-1.2-3 0-4.5 1.2 1.5 1.2 3.5 0 4.5z"/>',
+    wedding: '<circle cx="19" cy="29" r="9"/><circle cx="29" cy="29" r="9"/><path d="M16 15l3-5 3 5-3 4z"/>',
+    company: '<rect x="8" y="16" width="32" height="22" rx="3"/><path d="M18 16v-4h12v4M8 26h32M22 26v3h4v-3"/>',
+    family: '<circle cx="17" cy="14" r="5"/><path d="M8 38v-8a9 9 0 0 1 18 0v8"/><circle cx="33" cy="21" r="4"/><path d="M27 38v-5a6 6 0 0 1 12 0v5"/>',
+    launch: '<path d="M24 6c7 5 9 14 6 24H18C15 20 17 11 24 6z"/><circle cx="24" cy="18" r="3"/><path d="M18 30l-5 5 1-8M30 30l5 5-1-8M21 34l3 7 3-7"/>',
+    special: '<path d="M22 7l3 10 10 3-10 3-3 10-3-10-10-3 10-3z"/><path d="M36 29l1.5 4 4 1.5-4 1.5L36 40l-1.5-4-4-1.5 4-1.5z"/>',
+    palette: '<path d="M24 8C14 8 7 15 7 24s7 16 15 16c3 0 4-2 3-4s0-4 3-4h5c5 0 8-3 8-8 0-9-8-16-17-16z"/><circle cx="16" cy="23" r="2"/><circle cx="21" cy="15" r="2"/><circle cx="30" cy="15" r="2"/><circle cx="35" cy="22" r="2"/>',
+    chef: '<path d="M15 30c-5 0-8-4-8-8s4-8 8-7c1-4 5-7 9-7s8 3 9 7c4-1 8 3 8 7s-3 8-8 8"/><path d="M15 30v9h18v-9M15 34h18"/>',
+    moon: '<path d="M30 8a15 15 0 1 0 10 26A13 13 0 0 1 30 8z"/><path d="M37 11l1 2.5 2.5 1-2.5 1L37 18l-1-2.5-2.5-1 2.5-1z"/>',
+    dumbbell: '<path d="M14 24h20"/><rect x="9" y="16" width="5" height="16" rx="1.5"/><rect x="34" y="16" width="5" height="16" rx="1.5"/><rect x="4" y="20" width="5" height="8" rx="1.5"/><rect x="39" y="20" width="5" height="8" rx="1.5"/>',
+    booth: '<path d="M8 18l3-8h26l3 8"/><path d="M8 18c0 3 2 5 5 5s5-2 5-5c0 3 2 5 5 5s5-2 5-5c0 3 2 5 5 5s5-2 5-5"/><path d="M11 23v15h26V23M20 38v-8h8v8"/>',
+    gift: '<rect x="8" y="18" width="32" height="8" rx="1.5"/><path d="M11 26v13h26V26M24 18v21"/><path d="M24 18c-3-6-10-6-9-2s9 2 9 2zM24 18c3-6 10-6 9-2s-9 2-9 2z"/>',
+    guests: '<circle cx="18" cy="16" r="5"/><circle cx="31" cy="18" r="4"/><path d="M8 38v-5a10 10 0 0 1 20 0v5M27 38v-4a7 7 0 0 1 13 0v4"/>',
+    patch: '<path d="M24 7l4 6 7-1-1 7 6 5-6 5 1 7-7-1-4 6-4-6-7 1 1-7-6-5 6-5-1-7 7 1z"/><circle cx="24" cy="24" r="5"/>',
+    sun: '<circle cx="24" cy="24" r="7"/><path d="M24 7v5M24 36v5M7 24h5M36 24h5M12 12l3.5 3.5M32.5 32.5L36 36M12 36l3.5-3.5M32.5 15.5L36 12"/>',
+    calendar: '<rect x="8" y="11" width="32" height="28" rx="3"/><path d="M8 19h32M16 7v8M32 7v8"/><circle cx="18" cy="27" r="1.5"/><circle cx="24" cy="27" r="1.5"/><circle cx="30" cy="27" r="1.5"/>',
+    check: '<path d="M12 25l8 8 16-17"/>'
+  };
+  var EV_ICON = { birthday: 'birthday', wedding: 'wedding', company: 'company', family: 'family', launch: 'launch', special: 'special' };
+  var AT_ICON = { 'עמדת צביעה': 'palette', 'בר הכובעים': 'hats', 'סדנת שף': 'chef', 'מניפות לרחבה': 'fans', 'מסיבת פיג׳מות': 'moon', 'פתיחת סטודיו': 'dumbbell' };
+  var TINT = ['#FBE3D6', '#DDEFE3', '#E6E0F5', '#DCEBF7', '#FBF0C9', '#F8DDE6'];
+  function badge(name, i) { return '<span class="badge" style="background:' + TINT[(i || 0) % TINT.length] + '" aria-hidden="true">' + icon(name) + '</span>'; }
+  function icon(f) { return '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">' + (ICON[f] || ICON2[f] || ICON.bags) + '</svg>'; }
 
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var main = $('#main');
@@ -4685,7 +4809,7 @@ window.PATCHED_MEDIA = {
     '<a' + go('about') + '>אודות</a>' +
     '<a' + go('contact') + '>צור קשר</a>';
   $('#mega-events-list').innerHTML = D.events.map(function (e) {
-    return '<a class="mega-ev"' + go(e.id) + '><span class="im">' + img(evCover(e)) + '</span><span class="t">' + esc(e.title) + '</span></a>';
+    return '<a class="mega-ev"' + go(e.id) + '>' + badge(EV_ICON[e.id], D.events.indexOf(e)) + '<span class="t">' + esc(e.title) + '</span></a>';
   }).join('');
   $('#mega-types-list').innerHTML = FAMS.map(function (f) {
     return '<a class="mega-type"' + go(f === 'shirts' ? 'shirts' : 't-' + f) + '>' + icon(f) + '<span>' + esc(D.families[f].label) + '</span></a>';
@@ -4757,9 +4881,9 @@ window.PATCHED_MEDIA = {
   function famSub(p) { return p.family === 'shirts' ? shirtSub(p) : D.families[p.family].label; }
 
   function tiles(list) {
-    return '<div class="tiles">' + list.map(function (e) {
-      return '<a class="tile"' + go(e.id) + '><span class="im">' + img(evCover(e)) + '</span>' +
-        '<span class="ulink">' + esc(e.title) + ' ' + AR + '</span><span class="en">' + esc(EV_EN[e.id] || '') + '</span></a>';
+    return '<div class="ev-links">' + list.map(function (e) {
+      return '<a class="ev-link"' + go(e.id) + '>' + badge(EV_ICON[e.id], D.events.indexOf(e)) +
+        '<span class="tx"><span class="t">' + esc(e.title) + '</span><span class="k">' + esc(e.kicker) + '</span></span>' + AR + '</a>';
     }).join('') + '</div>';
   }
   function rail(id, cards) {
@@ -4807,45 +4931,169 @@ window.PATCHED_MEDIA = {
         '<div class="row"><a class="btn light"' + go('collections') + '>לקטלוג המוצרים שלנו</a><a class="btn ghost" style="color:#fff;border-color:rgba(255,255,255,.7)" href="' + wa(msgGeneral()) + '"' + EXT + '>וואטסאפ</a></div></div>' +
       '</section>' +
 
-      '<section class="wrap section" aria-labelledby="h-new"><div class="sec-head rv"><span class="latin" style="font-size:12px;color:var(--accent)">JUST DROPPED</span><h2 id="h-new">חדש בקטלוג</h2></div>' +
-        rail('rail-new', only(NEW).map(function (id) { return card(P[id], (P[id].family === 'shirts' ? 'shirts.' : 'all.') + id, famSub(P[id])); }).join('')) +
+      '<section class="wrap section" id="sec-types" aria-labelledby="h-types"><div class="sec-head"><span class="latin" style="font-size:12px;color:var(--accent)">STEP 1 · THE ITEMS</span><h2 id="h-types">מה לוקחים הביתה?</h2><p>בוחרים סוג, והמוצרים נפתחים כאן.</p></div>' +
+        '<div class="catbar" role="tablist" aria-label="סוגי מוצרים">' + FAMS.map(function (f, i) {
+          return '<button type="button" class="cat" role="tab" id="cat-' + f + '" data-cat="' + f + '" aria-selected="false" aria-controls="cat-panel">' + badge(f, i) + '<span>' + esc(D.families[f].label) + '</span></button>'; }).join('') + '</div>' +
+        '<div id="cat-panel" role="tabpanel" aria-live="polite"></div>' +
       '</section>' +
 
-      '<section class="banner" aria-labelledby="h-banner"><div class="bimgs" aria-hidden="true">' + only(BANNER).map(function (id) { return img(id, '', true); }).join('') + '</div>' +
-        '<div class="in"><span class="latin" style="font-size:12px">NEW · TEES</span><h2 id="h-banner">קולקציית החולצות</h2>' +
-        '<div class="links"><a class="ulink"' + go('shirts', ' data-preset="gender:women"') + '>נשים ' + AR + '</a><a class="ulink"' + go('shirts', ' data-preset="gender:men"') + '>גברים ' + AR + '</a><a class="ulink"' + go('shirts', ' data-preset="fit:oversize"') + '>אוברסייז ' + AR + '</a></div></div>' +
+      '<section class="build-wrap" id="sec-build" aria-labelledby="h-build"><div class="wrap">' +
+        '<div class="sec-head"><span class="latin" style="font-size:12px;color:var(--accent)">STEP 2 · YOUR EVENT</span><h2 id="h-build">הרכיבו את האירוע שלכם</h2><p>כמה לחיצות, ואנחנו מקבלים בוואטסאפ את כל מה שבחרתם.</p></div>' +
+        '<div class="builder" id="builder"></div>' +
+      '</div></section>' +
+
+      '<section class="wrap section" id="sec-how" aria-labelledby="h-how"><div class="sec-head"><span class="latin" style="font-size:12px;color:var(--accent)">PICK. PATCH. PARTY.</span><h2 id="h-how">בוחרים. מעצבים. מתאהבים.</h2></div>' +
+        '<ol class="how3">' +
+          '<li>' + badge('hats', 0) + '<span class="latin">PICK</span><b>בוחרים את הבסיס</b><span>כובע, תיק, חולצה או כל פריט אחר מהקטלוג.</span></li>' +
+          '<li>' + badge('patch', 2) + '<span class="latin">PATCH</span><b>מוסיפים את העיצוב</b><span>פאצ׳ים מהקולקציה, או עיצובים מיוחדים לאירוע שהוזמנו מראש.</span></li>' +
+          '<li>' + badge('bags', 1) + '<span class="latin">TAKE IT</span><b>לוקחים הביתה</b><span>הצוות שלנו מחבר את העיצוב במקום, והפריט מוכן.</span></li>' +
+        '</ol>' +
+        '<div class="dn2"><div>' + badge('sun', 4) + '<span><span class="latin">DAY</span> לגנים, לקבלות פנים ולאירועי יום.</span></div><div>' + badge('moon', 2) + '<span><span class="latin">NIGHT</span> לרחבה, למסיבה ולשעות הקטנות.</span></div></div>' +
       '</section>' +
 
-      '<section class="wrap section" id="sec-events" aria-labelledby="h-events"><div class="sec-head rv"><span class="latin" style="font-size:12px;color:var(--accent)">PICK YOUR PARTY</span><h2 id="h-events">אז, אצל מי חוגגים הפעם?</h2><p>בוחרים את סוג האירוע ורואים מה אפשר לעצב בו.</p></div>' +
-        tiles(D.events) +
-      '</section>' +
-
-      '<section class="wrap" id="sec-types" aria-labelledby="h-types" style="padding-bottom:clamp(56px,8vw,112px)"><div class="sec-head rv"><h2 id="h-types">מה לוקחים הביתה?</h2><p>כל המוצרים, לפי סוג.</p></div>' +
-        '<div class="mega-types">' + FAMS.map(function (f) { return '<a class="mega-type"' + go(f === 'shirts' ? 'shirts' : 't-' + f) + '>' + icon(f) + '<span>' + esc(D.families[f].label) + '</span></a>'; }).join('') + '</div>' +
-      '</section>' +
-
-      '<section class="split" id="sec-about" aria-labelledby="h-about" style="background:var(--soft)"><div class="ph" aria-hidden="true">' + only(ABOUT_IMGS).map(function (id) { return img(id, '', true); }).join('') + '</div>' +
-        '<div class="tx rv"><span class="latin" style="font-size:12px;color:var(--accent)">PICK. PATCH. PARTY.</span><h2 id="h-about">אודות PATCHED.</h2>' +
+      '<section class="wrap" id="sec-about" aria-labelledby="h-about" style="padding-bottom:clamp(40px,6vw,72px)"><div class="about-box">' +
+        '<h2 id="h-about">אודות PATCHED.</h2>' +
         '<p>PATCHED. היא עמדת Custom Bar לאירועים: האורחים בוחרים כובע, תיק או חולצה, מוסיפים פאצ׳ים ועיצובים, ויוצאים עם פריט שהם עיצבו בעצמם. אנחנו מגיעים עם עמדה מעוצבת וצוות שמכין הכול במקום, בכל הארץ.</p>' +
         '<ul class="points"><li>עמדה מעוצבת וצוות שמכין הכול במקום</li><li>בחירת פאצ׳ים והתאמה אישית לכל אורח</li><li>אפשרות לעיצובים ייחודיים לאירוע בתיאום מראש</li></ul>' +
-        '<div><a class="ulink"' + go('how') + '>איך זה עובד ' + AR + '</a></div></div>' +
-      '</section>' +
-
-      '<section class="split rev" id="sec-how" aria-labelledby="h-how"><div class="ph" aria-hidden="true">' + only(HOW_IMGS).map(function (id) { return img(id, '', true); }).join('') + '</div>' +
-        '<div class="tx rv"><span class="latin" style="font-size:12px;color:var(--accent)">HOW IT WORKS</span><h2 id="h-how">בוחרים. מעצבים. מתאהבים.</h2>' +
-        '<ol class="steps"><li><span class="n">PICK</span><b>בוחרים את הבסיס</b><span>כובע, תיק, חולצה או כל פריט אחר מהקטלוג.</span></li>' +
-        '<li><span class="n">PATCH</span><b>מוסיפים את העיצוב</b><span>פאצ׳ים מהקולקציה, או עיצובים מיוחדים לאירוע שהוזמנו מראש.</span></li>' +
-        '<li><span class="n">TAKE IT</span><b>לוקחים הביתה</b><span>הצוות שלנו מחבר את העיצוב במקום, והפריט מוכן.</span></li></ol>' +
-        '<h3 style="font-size:22px;margin-top:10px">אותה עמדה. אנרגיה אחרת.</h3>' +
-        '<div class="dn"><div><span class="latin">DAY</span><p>לגנים, לקבלות פנים ולאירועי יום.</p></div><div><span class="latin">NIGHT</span><p>לרחבה, למסיבה ולשעות הקטנות.</p></div></div>' +
-        '<div><a class="ulink" href="' + wa(msgGeneral()) + '"' + EXT + '>בואו ניצור משהו אישי ' + AR + '</a></div></div>' +
-      '</section>' +
-
-      (att.length ? '<section class="wrap section" id="sec-attr" aria-labelledby="h-attr"><div class="sec-head rv"><span class="latin" style="font-size:12px;color:var(--accent)">EXPERIENCES</span><h2 id="h-attr">רגעים שאפשר להזמין לאירוע</h2></div>' +
-        '<div class="grid g3">' + att.map(function (a) { var t = a.link.split('.'); return card(P[t[1]], a.link, a.text).replace('<span class="nm">' + esc(P[t[1]].name) + '</span>', '<span class="nm">' + esc(a.title) + '</span>'); }).join('') + '</div></section>' : '') +
+      '</div></section>' +
 
       contactHtml(null) + '</div>';
   }
+
+  /* ── home: product categories open in place ── */
+  var CAT_LIMIT = 6;
+  function renderCat() {
+    var host = $('#cat-panel'); if (!host) return;
+    var f = state.cat || FAMS[0];
+    main.querySelectorAll('[data-cat]').forEach(function (b) { b.setAttribute('aria-selected', String(b.getAttribute('data-cat') === f)); });
+    var ps = D.products.filter(function (p) { return p.family === f; });
+    var show = state.catMore ? ps : ps.slice(0, CAT_LIMIT);
+    var route = f === 'shirts' ? 'shirts' : 't-' + f;
+    host.setAttribute('aria-labelledby', 'cat-' + f);
+    host.innerHTML = '<div class="grid">' + show.map(function (p) { return card(p, route + '.' + p.id, famSub(p)); }).join('') + '</div>' +
+      '<div class="cat-more">' + (ps.length > show.length ? '<button type="button" class="btn ghost" data-cat-more>עוד ' + (ps.length - show.length) + ' ' + esc(D.families[f].label) + '</button>' : '') +
+      '<a class="ulink"' + go(route) + '>' + (f === 'shirts' ? 'לכל החולצות, עם סינון לפי נשים/גברים וגזרה' : 'לעמוד ה' + esc(D.families[f].label)) + ' ' + AR + '</a></div>';
+  }
+  main.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-cat]');
+    if (b) { state.cat = b.getAttribute('data-cat'); state.catMore = false; renderCat(); return; }
+    if (e.target.closest('[data-cat-more]')) { state.catMore = true; renderCat(); }
+  });
+  main.addEventListener('keydown', function (e) {
+    var b = e.target.closest && e.target.closest('[data-cat]'); if (!b || (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight')) return;
+    var all = [].slice.call(main.querySelectorAll('[data-cat]')), i = all.indexOf(b);
+    var n = all[(i + (e.key === 'ArrowLeft' ? 1 : -1) + all.length) % all.length]; // RTL: left = next
+    e.preventDefault(); n.focus(); n.click();
+  });
+
+  /* ── home: event builder (no photos) ── */
+  var GUESTS = ['עד 50', '50–150', '150–300', '300+'];
+  function experiences() {
+    var list = [{ id: 'live', t: 'עמדת Custom Bar חיה', x: 'האורחים מעצבים במקום, עם הצוות שלנו', ic: 'booth' },
+                { id: 'pre', t: 'פריטים מעוצבים מראש', x: 'מוכנים לחלוקה, לקיט או למתנה', ic: 'gift' }];
+    (D.attractions || []).forEach(function (a, i) { list.push({ id: 'a' + i, t: a.title, x: a.text, ic: AT_ICON[a.title] || 'patch' }); });
+    return list;
+  }
+  function famsFor(evId) {
+    var ev = E[evId], out = [];
+    (ev ? ev.picks : []).forEach(function (k) { var f = P[k.p].family; if (out.indexOf(f) < 0) out.push(f); });
+    return out;
+  }
+  function bState() { if (!state.b) state.b = { step: 1, ev: '', exp: [], fams: [], guests: '', date: '' }; return state.b; }
+  function bMessage(b) {
+    var X = experiences(), lines = ['היי, הגעתי דרך הקטלוג של PATCHED ואני רוצה להרכיב אירוע:'];
+    if (E[b.ev]) lines.push('סוג האירוע: ' + E[b.ev].title);
+    if (b.exp.length) lines.push('חוויות: ' + b.exp.map(function (id) { return X.filter(function (x) { return x.id === id; })[0].t; }).join(', '));
+    if (b.fams.length) lines.push('פריטים: ' + b.fams.map(function (f) { return D.families[f].label; }).join(', '));
+    if (b.guests) lines.push('מספר אורחים: ' + b.guests);
+    if (b.date) lines.push('תאריך משוער: ' + b.date);
+    lines.push('אשמח לקבל פרטים נוספים.');
+    return lines.join('\n');
+  }
+  function opt(kind, val, on, inner, i) {
+    return '<button type="button" class="opt' + (kind === 'ev' ? ' big' : '') + '" data-b="' + kind + '" data-v="' + esc(val) + '" aria-pressed="' + on + '">' + inner + '<span class="tick" aria-hidden="true">' + icon('check') + '</span></button>';
+  }
+  function renderBuilder(focusHead) {
+    var host = $('#builder'); if (!host) return;
+    var b = bState(), X = experiences(), steps = 5;
+    var titles = ['איזה אירוע חוגגים?', 'איזו חוויה תרצו?', 'מה האורחים לוקחים הביתה?', 'כמה אורחים בערך?', 'זה האירוע שלכם'];
+    var body = '';
+    if (b.step === 1) body = '<div class="opts ev">' + D.events.map(function (e, i) {
+      return opt('ev', e.id, b.ev === e.id, badge(EV_ICON[e.id], i) + '<span class="ot"><b>' + esc(e.title) + '</b><span>' + esc(e.kicker) + '</span></span>', i); }).join('') + '</div>';
+    if (b.step === 2) body = '<p class="hint">אפשר לבחור יותר מאחת.</p><div class="opts">' + X.map(function (x, i) {
+      return opt('exp', x.id, b.exp.indexOf(x.id) >= 0, badge(x.ic, i) + '<span class="ot"><b>' + esc(x.t) + '</b><span>' + esc(x.x) + '</span></span>', i); }).join('') + '</div>';
+    if (b.step === 3) { var fs = famsFor(b.ev);
+      body = '<p class="hint">אלה הפריטים שמתאימים ל' + esc(E[b.ev].title) + '. אפשר לבחור כמה.</p><div class="opts small">' + fs.map(function (f, i) {
+        return opt('fam', f, b.fams.indexOf(f) >= 0, badge(f, i) + '<span class="ot"><b>' + esc(D.families[f].label) + '</b></span>', i); }).join('') + '</div>' +
+        '<p class="hint"><a class="ulink"' + go(b.ev) + '>לכל הפריטים של ' + esc(E[b.ev].title) + ', עם תמונות ' + AR + '</a></p>'; }
+    if (b.step === 4) body = '<div class="opts small">' + GUESTS.map(function (g, i) {
+      return opt('guests', g, b.guests === g, badge('guests', i) + '<span class="ot"><b dir="ltr">' + esc(g) + '</b></span>', i); }).join('') + '</div>' +
+      '<label class="bdate" for="b-date">' + badge('calendar', 4) + '<span>תאריך משוער (לא חובה)</span><input id="b-date" value="' + esc(b.date) + '" placeholder="למשל: אמצע יוני"></label>';
+    if (b.step === 5) {
+      var row = function (ic, i, k, v) { return '<li>' + badge(ic, i) + '<span><span class="k">' + k + '</span><b>' + v + '</b></span></li>'; };
+      body = '<ul class="summary">' +
+        row(EV_ICON[b.ev], D.events.indexOf(E[b.ev]), 'אירוע', esc(E[b.ev].title)) +
+        row('patch', 2, 'חוויות', b.exp.length ? esc(b.exp.map(function (id) { return X.filter(function (x) { return x.id === id; })[0].t; }).join(', ')) : 'נחליט יחד') +
+        row('bags', 1, 'פריטים', b.fams.length ? esc(b.fams.map(function (f) { return D.families[f].label; }).join(', ')) : 'נחליט יחד') +
+        row('guests', 3, 'אורחים', b.guests ? '<span dir="ltr">' + esc(b.guests) + '</span>' : 'עוד לא ידוע') +
+        (b.date ? row('calendar', 4, 'תאריך', esc(b.date)) : '') + '</ul>' +
+        '<a class="btn wa-big" id="b-send" href="' + wa(bMessage(b)) + '"' + EXT + '>שליחה בוואטסאפ ' + AR + '</a>' +
+        '<p class="hint" style="text-align:center">הכפתור פותח את וואטסאפ עם ההודעה מוכנה. את השליחה עושים מתוך וואטסאפ.</p>';
+    }
+    var canNext = b.step !== 1 || !!b.ev;
+    host.innerHTML =
+      '<div class="b-top"><span class="b-count">שלב ' + b.step + ' מתוך ' + steps + '</span><span class="b-dots" aria-hidden="true">' +
+        [1, 2, 3, 4, 5].map(function (n) { return '<i' + (n <= b.step ? ' class="on"' : '') + '></i>'; }).join('') + '</span></div>' +
+      '<h3 class="b-title" id="b-title" tabindex="-1">' + titles[b.step - 1] + '</h3>' +
+      '<div class="b-body">' + body + '</div>' +
+      '<div class="b-nav">' +
+        (b.step > 1 ? '<button type="button" class="btn ghost" data-b="back">→ חזרה</button>' : '<span></span>') +
+        (b.step === 1 && !b.ev ? '<span class="hint" style="margin:0">בחרו אירוע כדי להמשיך</span>' : b.step < 5 ? '<button type="button" class="btn" data-b="next"' + (canNext ? '' : ' disabled') + '>' + (b.step === 1 ? 'הבא' : ((b.step === 2 && !b.exp.length) || (b.step === 3 && !b.fams.length) || (b.step === 4 && !b.guests) ? 'דלגו' : 'הבא')) + ' ←</button>' :
+          '<button type="button" class="btn ghost" data-b="restart">להתחיל מחדש</button>') +
+      '</div>';
+    if (focusHead) { var h = $('#b-title'); if (h) h.focus({ preventScroll: true }); var top = $('#sec-build'); if (top && top.getBoundingClientRect().top < 0) $('#builder').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  }
+  main.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-b]'); if (!t || !$('#builder') || !$('#builder').contains(t)) return;
+    var b = bState(), k = t.getAttribute('data-b'), v = t.getAttribute('data-v');
+    if (k === 'ev') { if (b.ev !== v) { b.fams = []; } b.ev = v; b.step = 2; renderBuilder(true); return; }
+    if (k === 'exp' || k === 'fam') { var arr = k === 'exp' ? b.exp : b.fams, i = arr.indexOf(v); if (i >= 0) arr.splice(i, 1); else arr.push(v); renderBuilder(false); var again = $('#builder [data-b="' + k + '"][data-v="' + v + '"]'); if (again) again.focus(); return; }
+    if (k === 'guests') { b.guests = b.guests === v ? '' : v; renderBuilder(false); var g = $('#builder [data-b="guests"][data-v="' + v + '"]'); if (g) g.focus(); return; }
+    if (k === 'next' && (b.step !== 1 || b.ev)) { b.step++; renderBuilder(true); return; }
+    if (k === 'back') { b.step--; renderBuilder(true); return; }
+    if (k === 'restart') { state.b = null; renderBuilder(true); }
+  });
+  main.addEventListener('input', function (e) { if (e.target.id === 'b-date') bState().date = e.target.value.trim(); });
+
+  /* ── privacy ── */
+  function renderPrivacy() {
+    document.title = 'מדיניות פרטיות · PATCHED.';
+    main.innerHTML = '<div class="view">' + crumbs([['home', 'בית'], [null, 'מדיניות פרטיות']]) +
+      '<article class="wrap policy" aria-labelledby="h-priv"><span class="latin" style="font-size:12px;color:var(--accent)">PRIVACY</span>' +
+      '<h1 id="h-priv">מדיניות פרטיות</h1><p class="upd">עודכן לאחרונה: 11 באוקטובר 2026</p>' +
+      '<p>האתר הזה הוא קטלוג תצוגה של PATCHED.BAR (להלן "PATCHED."). כאן מוסבר איזה מידע נאסף כשאתם גולשים באתר, מה עושים איתו, ואיך פונים אלינו בכל שאלה.</p>' +
+      '<h2>מידע שאתם מוסרים</h2><p>באתר אין הרשמה, אין חנות ואין תשלום. בטופס "השאירו פרטים" ובמדריך "הרכיבו את האירוע שלכם" אפשר לכתוב שם, טלפון ופרטי אירוע. הפרטים האלה לא נשלחים אלינו ולא נשמרים באתר. לחיצה על "שליחה בוואטסאפ" פותחת את וואטסאפ עם הודעה מוכנה, וההודעה נשלחת רק אם תבחרו לשלוח אותה מתוך וואטסאפ.</p>' +
+      '<p>הודעה שתשלחו אלינו בוואטסאפ תשמש אותנו רק כדי לחזור אליכם בנוגע לאירוע, להציע הצעה ולתאם את השירות. לא נעביר אותה לאחרים ולא נשתמש בה לדיוור בלי הסכמתכם.</p>' +
+      '<h2>עוגיות (Cookies) ואחסון בדפדפן</h2><p>האתר לא משתמש בעוגיות למעקב, לסטטיסטיקה או לפרסום. אנחנו שומרים בדפדפן שלכם רק סימון אחד: שאישרתם את הודעת הפרטיות, כדי שהיא לא תקפוץ שוב בכל כניסה. אפשר למחוק אותו בכל רגע דרך הגדרות הדפדפן.</p>' +
+      '<h2>מידע טכני שנאסף אוטומטית</h2><ul>' +
+        '<li>האתר מאוחסן אצל ספק אחסון (Vercel), ששומר באופן אוטומטי נתונים טכניים כמו כתובת IP, סוג דפדפן ושעת הגלישה, לצורך הפעלת האתר ואבטחתו.</li>' +
+        '<li>הגופנים באתר נטענים מ-Google Fonts, ולכן הדפדפן שלכם פונה לשרתים של Google כשהאתר נטען.</li>' +
+        '<li>מעבר לוואטסאפ או לאינסטגרם כפוף למדיניות הפרטיות של Meta.</li></ul>' +
+      '<h2>הזכויות שלכם</h2><p>אתם יכולים לבקש לעיין במידע שלכם שנמצא אצלנו (למשל בהתכתבות בוואטסאפ), לבקש לתקן אותו או למחוק אותו. פנו אלינו בוואטסאפ ' + '<span dir="ltr">' + esc(D.contact.whatsappDisplay) + '</span> או במייל <span dir="ltr" style="user-select:all">' + esc(D.contact.email) + '</span>, ונטפל בבקשה בהקדם.</p>' +
+      '<h2>שינויים במדיניות</h2><p>אם נשנה את המדיניות, נעדכן אותה בעמוד הזה ואת תאריך העדכון בראשו.</p>' +
+      '<p style="margin-top:28px"><a class="ulink"' + go('home') + '>חזרה לדף הבית ' + AR + '</a></p>' +
+      '</article></div>';
+  }
+
+  /* ── privacy notice (shown until confirmed, remembered in this browser) ── */
+  var CONSENT_KEY = 'patched-privacy-ok';
+  function consentDone() { try { return localStorage.getItem(CONSENT_KEY) === '1'; } catch (e) { return !!window.__consentOk; } }
+  var consentEl = $('#consent');
+  if (!consentDone()) consentEl.hidden = false;
+  $('#consent-ok').addEventListener('click', function () {
+    try { localStorage.setItem(CONSENT_KEY, '1'); } catch (e) { window.__consentOk = true; }
+    consentEl.hidden = true;
+  });
 
   /* ── event (category) page ── */
   function renderEvent(ev) {
@@ -4857,7 +5105,6 @@ window.PATCHED_MEDIA = {
       '<section class="wrap page-head" aria-labelledby="h-ev"><div><span class="latin" style="font-size:12px;color:var(--accent)">' + esc(EV_EN[ev.id] || '') + '</span><h1 id="h-ev">' + esc(ev.title) + '</h1></div>' +
         '<div><p class="lead">' + esc(ev.intro) + '</p><ul class="points">' + ev.points.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>' +
         '<div style="margin-top:18px"><a class="ulink" href="' + wa(msgGeneral()) + '"' + EXT + '>לפרטים נוספים ' + AR + '</a></div></div></section>' +
-      '<div class="cat-band">' + ev.picks.slice(0, 4).map(function (k) { return '<a' + go(ev.id + '.' + k.p) + ' aria-label="' + esc(P[k.p].name) + '">' + img(k.p) + '</a>'; }).join('') + '</div>' +
       '<section class="wrap" aria-label="פריטים בקולקציה">' +
         '<div class="filters" role="group" aria-label="סינון לפי סוג פריט"><span class="lbl">הצגה:</span>' +
           '<button type="button" class="chip" data-filter="all" aria-pressed="' + (state.filter === 'all') + '">הכול <span class="cnt">' + ev.picks.length + '</span></button>' +
@@ -5139,7 +5386,7 @@ window.PATCHED_MEDIA = {
       else { var sp = (state.page || 'home').split('.'); view = sp[0]; pid = sp[1] || null; }
     }
     var isType = view.indexOf('t-') === 0 && FAMS.indexOf(view.slice(2)) >= 0 && view !== 't-shirts';
-    var valid = view === 'home' || view === 'all' || view === 'shirts' || isType || !!E[view];
+    var valid = view === 'home' || view === 'all' || view === 'shirts' || view === 'privacy' || isType || !!E[view];
     if (!valid) { cur = 'home'; setHash('home', true); view = 'home'; pid = null; }
     if (pid && !(P[pid] && (view === 'all' || (view === 'shirts' && P[pid].family === 'shirts') || (isType && P[pid].family === view.slice(2)) || (E[view] && pickOf(E[view], pid))))) {
       cur = view; setHash(view, true); pid = null;
@@ -5157,7 +5404,7 @@ window.PATCHED_MEDIA = {
       if (E[view] && state.view !== view) state.filter = 'all';
       state.view = view; state.page = page; state.pid = pid;
       if (pid) renderProduct(view, pid);
-      else if (view === 'home') renderHome(); else if (view === 'all') renderAll(); else if (view === 'shirts') renderShirts(); else if (isType) renderType(view.slice(2)); else renderEvent(E[view]);
+      else if (view === 'home') { renderHome(); renderCat(); renderBuilder(false); } else if (view === 'all') renderAll(); else if (view === 'privacy') renderPrivacy(); else if (view === 'shirts') renderShirts(); else if (isType) renderType(view.slice(2)); else renderEvent(E[view]);
       reveal(); railUpdate();
       if (!scrollTarget) window.scrollTo({ top: pid ? 0 : (scrollMem[page] || 0), left: 0, behavior: 'instant' });
       if (pid) { var h = $('#pp-title'); if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); } }
